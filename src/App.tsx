@@ -1,26 +1,38 @@
+/// App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LivroLista from './LivroLista'; // Ajuste o caminho conforme necessário
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        {/* Menu de Navegação */}
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="navbar-brand" to="/">Livros</Link>
+          <div className="collapse navbar-collapse">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Lista de Livros</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/dados">Dados do Livro</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        {/* Rotas */}
+        <Routes>
+          <Route path="/" element={<LivroLista />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+
